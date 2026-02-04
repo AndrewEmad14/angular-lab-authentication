@@ -1,0 +1,122 @@
+<div class="flex-column d-flex justify-content-center align-items-center vh-100">
+  @if (isValidUser()) {
+    <div class="text-center p-5 border rounded-4 shadow-sm bg-white">
+      <h2 class="text-success">Congratulations, you are in!</h2>
+      <p class="mb-4">Welcome aboard, {{ loggedUser()?.name }}</p>
+      <a
+        routerLink="/home"
+        class="btn btn-primary"
+        (click)="isValidUser.set(false)"
+      >
+        Return Home
+      </a>
+    </div>
+  } @else {
+
+    <div class="container w-50">
+      <form [formGroup]="userForm" (ngSubmit)="handleUserSubmition()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            aria-describedby="emailHelp"
+            name="name"
+            formControlName="name"
+          />
+        </div>
+        @if (userForm.controls['name'].invalid && userForm.controls['name'].touched) {
+          @if (userForm.controls['name'].errors?.['required']) {
+            <div class="form-text text-danger">Required Error</div>
+          }
+          @if (userForm.controls['name'].errors?.['minlength']) {
+            <div class="form-text text-danger">Min length Error</div>
+          }
+        }
+  
+        <div class="mb-3">
+          <label for="userEmail" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="userEmail"
+            name="email"
+            formControlName="user_email"
+          />
+        </div>
+        @if (userForm.controls['user_email'].invalid && userForm.controls['user_email'].touched) {
+          @if (userForm.controls['user_email'].errors?.['required']) {
+            <div class="form-text text-danger">Required Error</div>
+          }
+          @if (userForm.controls['user_email'].errors?.['email']) {
+            <div class="form-text text-danger">wrong format</div>
+          }
+        }
+  
+        <div class="mb-3">
+          <label for="userName" class="form-label">User name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="userName"
+            aria-describedby="userName"
+            formControlName="user_name"
+          />
+        </div>
+        @if (userForm.controls['user_name'].invalid && userForm.controls['user_name'].touched) {
+          @if (userForm.controls['user_name'].errors?.['required']) {
+            <div class="form-text text-danger">Required Error</div>
+          }
+          @if (userForm.controls['user_name'].errors?.['minlength']) {
+            <div class="form-text text-danger">Min length Error</div>
+          }
+        }
+  
+        <div class="mb-3">
+          <label for="userPassword" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="userPassword"
+            name="userPassword"
+            formControlName="user_password"
+          />
+        </div>
+        @if (
+          userForm.controls['user_password'].invalid && userForm.controls['user_password'].touched
+        ) {
+          @if (userForm.controls['user_password'].errors?.['required']) {
+            <div class="form-text text-danger">Required Error</div>
+          }
+          @if (userForm.controls['user_password'].errors?.['minlength']) {
+            <div class="form-text text-danger">Min length Error</div>
+          }
+          @if (userForm.controls['user_password'].errors?.['pattern']) {
+            <div class="form-text text-danger">Wrong password format</div>
+          }
+        }
+        <div class="mb-3">
+          <label for="confirmUserPassword" class="form-label">Confirm password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirmUserPassword"
+            name="confirmUserPassword"
+            formControlName="confirm_password"
+          />
+        </div>
+        @if (
+          userForm.controls['confirm_password'].invalid &&
+          userForm.controls['confirm_password'].touched
+        ) {
+          <!-- @if (userForm.controls['confirm_password'].errors?.['passwordMismatch']) {
+            <div class="form-text text-danger">Passwords dont match</div>
+          } -->
+        
+        }
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  }
+</div>

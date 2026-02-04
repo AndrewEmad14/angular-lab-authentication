@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "username": "alice_j",
+    "email": "alice.j@example.com",
+    "password": "hashed_password_v1"
+  },
+  {
+    "id": 2,
+    "name": "Marcus Chen",
+    "username": "mchen_dev",
+    "email": "marcus.chen@techcorp.io",
+    "password": "hashed_password_v2"
+  },
+  {
+    "id": 3,
+    "name": "Sarah Miller",
+    "username": "sarah_m88",
+    "email": "smiller@webmail.com",
+    "password": "hashed_password_v3"
+  },
+  {
+    "id": 4,
+    "name": "David Smith",
+    "username": "dave_smith",
+    "email": "david.smith@provider.net",
+    "password": "hashed_password_v4"
+  },
+  {
+    "id": 5,
+    "name": "Elena Rodriguez",
+    "username": "elena_rod",
+    "email": "erodriguez@company.org",
+    "password": "hashed_password_v5"
+  },
+  {
+    "id": 6,
+    "name": "Kevin Park",
+    "username": "kpark_99",
+    "email": "kevin.park@example.com",
+    "password": "hashed_password_v6"
+  },
+  {
+    "id": 7,
+    "name": "Amina Okafor",
+    "username": "amina_codes",
+    "email": "a.okafor@startup.co",
+    "password": "hashed_password_v7"
+  },
+  {
+    "id": 8,
+    "name": "Leo Maxwell",
+    "username": "leomax",
+    "email": "leo.maxwell@domain.com",
+    "password": "hashed_password_v8"
+  },
+  {
+    "id": 9,
+    "name": "Chloe Watson",
+    "username": "chloe_w",
+    "email": "c.watson@internet.edu",
+    "password": "hashed_password_v9"
+  },
+  {
+    "id": 10,
+    "name": "Omar Hassan",
+    "username": "omar_h",
+    "email": "ohassan@freemail.com",
+    "password": "hashed_password_v10"
+  }
+]

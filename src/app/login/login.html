@@ -1,0 +1,88 @@
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
+  @if (isValidUser()) {
+    <div class="text-center p-5 border rounded-4 shadow-sm bg-white">
+      <h2 class="text-success">Congratulations, you are in!</h2>
+      <p class="mb-4">Welcome back, {{ loggedUser()?.name }}</p>
+      <a routerLink="/home" class="btn btn-primary" (click)="isValidUser.set(false); submitted.set(false)">
+        Return Home
+      </a>
+    </div>
+  } @else {
+    @if (!isValidUser() && submitted()) {
+      <div class="d-flex justify-content-center">
+        <div class="d-flex alert alert-danger w-100" role="alert" [hidden]="">
+          Wrong email or password please try again
+        </div>
+      </div>
+    }
+    <form
+      style="width: 100%; max-width: 400px"
+      class="border p-4 rounded-4 shadow-sm mb-5"
+      #loginForm="ngForm"
+      (ngSubmit)="onSubmit(loginForm)"
+    >
+      <div class="mb-3">
+        <label for="userEmail" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          [(ngModel)]="emailData"
+          id="userEmail"
+          aria-describedby="emailHelp"
+          #userEmail="ngModel"
+          name="userEmail"
+          required
+          email
+        />
+        <div
+          [hidden]="userEmail.valid || userEmail.pristine || userEmail.untouched"
+          class="alert alert-danger"
+        >
+          @if (userEmail.errors?.['required']) {
+            <span>Email is required.</span>
+          } @else if (userEmail.errors?.['email']) {
+            <span>Please enter a valid email address.</span>
+          }
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="userPassword" class="form-label">Password</label>
+        <input
+          [type]="showPassword() ? 'text' : 'password'"
+          [(ngModel)]="password"
+          class="form-control"
+          id="userPassword"
+          name="userPassword"
+          required
+          #userPassword="ngModel"
+        />
+        <div
+          [hidden]="userPassword.valid || userPassword.pristine || userPassword.untouched"
+          class="alert alert-danger mb-3"
+        >
+          Password is required
+        </div>
+      </div>
+      <div class="mb-3 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="exampleCheck1"
+          #checkBox
+          (change)="togglePassword()"
+        />
+        <label class="form-check-label" for="exampleCheck1">Show password</label>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.form.valid">
+        Login
+      </button>
+    </form>
+  
+    <div class="d-flex justify-content-center gap-2">
+      <p class="fw-bold fs-4 m-0">Dont have an account?</p>
+      <a routerLink="/register" type="button" class="btn btn-primary" (click)="submitted.set(false)"
+        >Register Now</a
+      >
+    </div>
+  }
+</div>
